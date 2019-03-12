@@ -9,7 +9,7 @@ const Users = ({users}) => {
           <li key={user.id}>{user.name}</li>
           <ul>
             {user.favorites.map(fav =>
-                <li key={fav.id}>{fav.name} (Ranked: {fav.rank})</li>
+                <li key={fav.id}>{fav.thing.name}{console.log(fav)} (Ranked: {fav.rank})</li>
               )}
           </ul>
         </div>

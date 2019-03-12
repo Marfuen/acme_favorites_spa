@@ -8,7 +8,7 @@ app.get('/app.js', (req, res, next)=> res.sendFile(path.join(__dirname, 'dist', 
 app.get('/', (req, res, next)=> res.sendFile(path.join(__dirname, 'index.html')));
 
 app.get('/users', (req,res,next) => {
-  return User.findAll({include: [{model: Favorite, include: [Thing]}], order: ["name"]})
+  User.findAll({include: [{model: Favorite, include: [Thing]}], order: ["name"]}, {order: ["rank"]})
       .then(allUsers => {
         res.json(allUsers)
       })
@@ -16,7 +16,7 @@ app.get('/users', (req,res,next) => {
 })
 
 app.get('/things', (req,res,next) => {
-  return Thing.findAll({include: [{model: Favorite, include: [User]}], order: ["name"]})
+  Thing.findAll({include: [{model: Favorite, include: [User]}], order: ["name"]})
       .then(allThings => res.json(allThings))
       .catch(next);
 })

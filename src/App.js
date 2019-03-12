@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Route, Switch, HashRouter} from "react-router-dom";
+import {Route, Switch, HashRouter, Redirect} from "react-router-dom";
 import axios from "axios";
 import Navbar from "./Navbar";
 import Things from "./Things";
@@ -35,7 +35,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/things" render={()=> <Things things={this.state.things}/>} />
               <Route exact path="/users" render={()=> <Users users={this.state.users}/>}/>
-              <Route exact path="/" render={()=> <Users users={this.state.users}/>}/>
+              <Redirect to="/users" />
             </Switch>
         </div>
       </HashRouter>
